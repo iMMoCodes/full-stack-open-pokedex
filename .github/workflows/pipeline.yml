@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
@@ -13,8 +16,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install 
-        run: npm install  
+      - name: npm install
+        run: npm install
       - name: lint
         run: npm run eslint
       - name: build
